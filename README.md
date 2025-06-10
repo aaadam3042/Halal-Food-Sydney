@@ -44,8 +44,7 @@ A mobile-first web app for discovering halal food locations in Sydney, with a fo
 - `/` → Home map with halal locations
 - `/list` → Scrollable list of entries with filters
 - `/settings` → Help, glossary, and login status
-- `/entry/:id` → Detailed view of a single entry
-- `/propose` → Submit a new location
+- `/listing/:id` → Detailed view of a single entry
 - `/admin` → Admin dashboard (restricted access)
 
 ---
