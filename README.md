@@ -56,7 +56,7 @@ A mobile-first web app for discovering halal food locations in Sydney, with a fo
 git clone https://github.com/your-username/halal-food-sydney.git
 cd halal-food-sydney
 npm install
-npm run dev
+npm run start
 ```
 
 ---
