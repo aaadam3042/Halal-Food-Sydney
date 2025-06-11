@@ -2,12 +2,9 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
 import React from "react";
-import Link from "next/link";
-import MapIcon from "@mui/icons-material/Map";
-import ListAllIcon from '@mui/icons-material/ListAlt';
-import SettingsIcon from '@mui/icons-material/Settings';
+import Header from "./header";
+import { NavBar } from "./navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,16 +37,11 @@ export default function RootLayout({
 
         <AppRouterCacheProvider>
 
-        {children} 
-        <Box sx={{ position: "fixed", bottom: 0, left: 0, right: 0}}>
-        <BottomNavigation showLabels > { /* TODO: These use link and are thus prefetching - think about whether this is needed in terms of firebase document reads (Are we going to read once after location services are enabled or location input first and thus we page our results and keep these in memory so we can prefetch without loading more data from firebase) */ }
-          <BottomNavigationAction label="Map" icon={<MapIcon />} LinkComponent={Link} href="/map"/>
-          <BottomNavigationAction label="List" icon={<ListAllIcon />} LinkComponent={Link} href="/list" />
-          <BottomNavigationAction label="Settings" icon={<SettingsIcon />} LinkComponent={Link} href="/settings" />
-        </BottomNavigation>
-        </Box>
+        <Header />
 
-        {/* <Offset /> */}
+          {children} 
+        
+        <NavBar />
 
         </AppRouterCacheProvider>
       </body>
