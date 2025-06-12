@@ -5,7 +5,6 @@ import "./globals.css";
 import React from "react";
 import Header from "../components/mapview/header";
 import NavBar from "../components/mapview/navbar";
-import LocationBar from "../components/mapview/locationbar"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

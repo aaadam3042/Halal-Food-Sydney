@@ -8,11 +8,11 @@ export function LocationBar() {
     // TODO: Make location button request location or update it
 
     return (
-        <>
-        <AppBar sx={{top: 60, left: 0, right: 0, width: '100%', backgroundColor: "brown"}}>
+        <AppBar position="fixed" sx={{ backgroundColor: '#964B00', top: 60}}>
             <Toolbar>
-            <Box paddingX={1} paddingY={0} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'left' }} margin={0} padding={0} > 
+            <Box paddingX={1} paddingY={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                <Typography variant="h5"> ‎  </Typography> {/* Workaround for weird MUI appbar resizing */}
+                <Typography component="div" sx={{ flexGrow: 1, textAlign: 'left'}}> 
                     Lakemba, NSW
                 </Typography>
                 <Box>
@@ -27,7 +27,6 @@ export function LocationBar() {
             </Box>
             </Toolbar>
         </AppBar>
-        </>
     );
 }
 
