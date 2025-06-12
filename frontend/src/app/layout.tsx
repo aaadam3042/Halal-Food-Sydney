@@ -4,7 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import Header from "./header";
-import { NavBar } from "./navbar";
+import NavBar from "./navbar";
+import LocationBar from "./locationbar"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
 
         <Header />
+        <LocationBar />
 
           {children} 
 
