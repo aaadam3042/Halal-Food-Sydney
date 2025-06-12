@@ -13,7 +13,9 @@ export function MapView() {
     // TODO: Integrate an actual map - THIS IS JUST A PLACEHOLDER
 
     return (
-        <Paper elevation={2} sx={{backgroundColor: "white", height: "90%", width: "95vw", borderRadius: "10px",}}>
+        <Paper elevation={2} sx={{backgroundColor: "white", height: "90%", width: "95vw", 
+        borderRadius: "10px", backgroundImage: "url('/map-placeholder.png')",
+        backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat",}}>
             
             {/* <APIProvider apiKey={Maps_API_Key}>
                 <Map
