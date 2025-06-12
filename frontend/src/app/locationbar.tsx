@@ -1,8 +1,11 @@
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import LocationIcon from '@mui/icons-material/NearMe';
 
 export function LocationBar() {
+
+    // TODO: Make search button open a search modal
+    // TODO: Make location button request location or update it
 
     return (
         <>
@@ -13,8 +16,13 @@ export function LocationBar() {
                     Lakemba, NSW
                 </Typography>
                 <Box>
-                <SearchIcon sx ={{fontsize: 28, marginRight: 2}} />
-                <LocationIcon sx ={{fontsize: 28, marginRight: 2}} />
+                <IconButton sx={{ color: 'white', padding: 0}} aria-label="search">
+                    <SearchIcon sx ={{fontsize: 28, marginRight: 2}} />
+                </IconButton>
+
+                <IconButton sx={{ color: 'white', padding: 0}} aria-label="location">
+                    <LocationIcon sx ={{fontsize: 28, marginRight: 2}} />
+                </IconButton>
                 </Box>
             </Box>
             </Toolbar>
