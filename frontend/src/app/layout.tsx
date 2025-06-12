@@ -37,7 +37,6 @@ export default function RootLayout({
         <AppRouterCacheProvider>
 
         <Header />
-        <LocationBar />
 
           {children} 
 
