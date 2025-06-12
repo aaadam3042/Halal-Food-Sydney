@@ -1,7 +1,8 @@
 import Image from "next/image";
-import MapView from "./mapview";
-import LocationBar from "./locationbar";
+import MapView from "../components/mapview/mapview";
+import LocationBar from "../components/mapview/locationbar";
 import { Box } from "@mui/material";
+import MapFilters from "../components/mapview/mapfilters";
 
 export default function Home() {
 
@@ -11,12 +12,13 @@ export default function Home() {
   return (
     <>
       <LocationBar /> 
-      <Box sx={{ position: "fixed", top: 100, left: 0, width: "100vw", height: "85vh", 
+      <Box sx={{ position: "fixed", top: 120, left: 0, width: "100vw", height: "83vh", 
         overflow: "hidden", backgroundColor: "lightGray", display: "flex", 
-        flexDirection:"column", justifyContent: "start", alignItems: "center"}}>
+        flexDirection:"column", justifyContent: "space-evenly", alignItems: "center"}}>
 
+        <MapFilters />
         <MapView />
-        
+
       </Box>
     </>
   );

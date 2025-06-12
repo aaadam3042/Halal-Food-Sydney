@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import React from "react";
-import Header from "./header";
-import NavBar from "./navbar";
-import LocationBar from "./locationbar"
+import Header from "../components/mapview/header";
+import NavBar from "../components/mapview/navbar";
+import LocationBar from "../components/mapview/locationbar"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
