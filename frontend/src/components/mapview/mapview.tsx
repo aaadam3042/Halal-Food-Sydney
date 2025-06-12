@@ -13,7 +13,7 @@ export function MapView() {
     // TODO: Integrate an actual map - THIS IS JUST A PLACEHOLDER
 
     return (
-        <Box sx={{backgroundColor: "white", height: "90%", width: "95vw", borderRadius: "10px",}}>
+        <Paper elevation={2} sx={{backgroundColor: "white", height: "90%", width: "95vw", borderRadius: "10px",}}>
             
             {/* <APIProvider apiKey={Maps_API_Key}>
                 <Map
@@ -25,7 +25,7 @@ export function MapView() {
                 />
             </APIProvider> */}
 
-        </Box>
+        </Paper>
     );
 }
 
