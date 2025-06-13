@@ -5,8 +5,7 @@ export function SummaryCard() {
     return (
         <>
         <Card elevation={4} sx={{
-            position: "absolute",
-            bottom: "5%" }}>
+            position: "absolute", bottom: "5%", borderRadius: "20px" }}>
             <CardContent>
                 <Box sx={{ minWidth: "350px", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
                     <Box sx={{flexDirection: "column"}}>
