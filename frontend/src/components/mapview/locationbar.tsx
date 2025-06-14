@@ -8,7 +8,7 @@ export function LocationBar() {
     // TODO: Make location button request location or update it
 
     return (
-        <AppBar position="fixed" sx={{ backgroundColor: '#964B00', top: 60}}>
+        <AppBar position="fixed" sx={{ backgroundColor: '#4A4238', top: 60}}>
             <Toolbar>
             <Box paddingX={1} paddingY={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                 <Typography variant="h5"> ‎  </Typography> {/* Workaround for weird MUI appbar resizing */}
