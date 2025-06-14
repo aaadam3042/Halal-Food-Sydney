@@ -1,9 +1,10 @@
 import LocationFilters from "@/components/locationfilters";
+import SearchBar from "@/components/searchbar";
 import SummaryDetails from "@/components/summarydetails";
 import { Box, Divider, List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
 
 export function ListPage() {
-    // TODO: Consider if we want to keep location bar here 
+    // TODO: Consider if we want to add location bar here 
 
     return (
         <Box sx={{ position: "fixed", top: 64, left: 0, width: "100vw", height: "calc(100vh - 64px - 56px)", 
@@ -12,6 +13,8 @@ export function ListPage() {
         backgroundSize: "30%", backgroundPosition: "center", backgroundRepeat: "repeat"}}>
 
             <LocationFilters />
+
+            <SearchBar />
 
             <Paper elevation={3} sx={{ borderRadius: "10px"}}>
             <List sx={{ height: "70vh", overflow: "auto", minWidth: "25rem", bgcolor: "background.paper", color: "black", margin: "5px" }}>
