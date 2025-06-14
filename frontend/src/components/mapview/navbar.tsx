@@ -1,7 +1,6 @@
 import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
 import MapIcon from "@mui/icons-material/Map";
 import ListAllIcon from '@mui/icons-material/ListAlt';
-import SettingsIcon from '@mui/icons-material/Settings';
 import Link from "next/link";
 
 export function NavBar() {
@@ -17,7 +16,6 @@ export function NavBar() {
         <BottomNavigation showLabels > 
           <BottomNavigationAction label="Map" icon={<MapIcon />} LinkComponent={Link} href="/"/>
           <BottomNavigationAction label="List" icon={<ListAllIcon />} LinkComponent={Link} href="/list" />
-          <BottomNavigationAction label="Settings" icon={<SettingsIcon />} LinkComponent={Link} href="/settings" />
         </BottomNavigation>
         </Box>
         </>
