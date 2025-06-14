@@ -1,7 +1,7 @@
 import MapView from "../components/mapview/mapview";
 import LocationBar from "../components/mapview/locationbar";
 import { Box } from "@mui/material";
-import MapFilters from "../components/mapview/mapfilters";
+import LocationFilters from "../components/locationfilters";
 import SummaryCard from "@/components/mapview/summarycard";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
         alignItems: "center", backgroundImage: "url(/geometric-background.png)",
         backgroundSize: "30%", backgroundPosition: "center", backgroundRepeat: "repeat"}}>
 
-        <MapFilters />
+        <LocationFilters />
         <MapView />
         <SummaryCard />
 

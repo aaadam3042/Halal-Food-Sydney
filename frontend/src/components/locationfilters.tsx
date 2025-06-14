@@ -1,6 +1,6 @@
 import { Box, Chip } from "@mui/material";
 
-export function MapFilters() {
+export function LocationFilters() {
     return(
         <Box sx={{display: "flex", flexDirection: "row", justifyContent: "start", 
         alignContent: "center", width: "95vw", gap: 1.5}}>
@@ -10,4 +10,4 @@ export function MapFilters() {
     );
 }
 
-export default MapFilters;
+export default LocationFilters;
