@@ -1,5 +1,4 @@
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { Box, Card, CardContent, Chip, Typography } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 import SummaryDetails from "../summarydetails";
 
 export function SummaryCard() {

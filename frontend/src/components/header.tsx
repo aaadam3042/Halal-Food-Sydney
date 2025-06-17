@@ -1,5 +1,5 @@
 import { AdminPanelSettings, Notifications } from '@mui/icons-material';
-import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import Link from 'next/link';
 import SettingsIcon from '@mui/icons-material/Settings';
 

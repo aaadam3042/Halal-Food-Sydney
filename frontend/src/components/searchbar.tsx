@@ -1,4 +1,4 @@
-import { Box, InputBase, Paper, TextField } from "@mui/material";
+import { InputBase, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 export function SearchBar() {

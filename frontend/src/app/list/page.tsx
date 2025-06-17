@@ -1,7 +1,7 @@
 import LocationFilters from "@/components/locationfilters";
 import SearchBar from "@/components/searchbar";
 import SummaryDetails from "@/components/summarydetails";
-import { Box, Divider, List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
+import { Box, List, ListItem, Paper } from "@mui/material";
 
 export function ListPage() {
     // TODO: Consider if we want to add location bar here 

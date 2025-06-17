@@ -1,7 +1,6 @@
 'use client';
 
-import { Box, Paper } from "@mui/material";
-import { APIProvider, Map } from "@vis.gl/react-google-maps"
+import { Paper } from "@mui/material";
 
 export function MapView() {
     // Map should span the whole screen with padding
