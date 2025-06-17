@@ -1,6 +1,6 @@
 import { Box, Paper, Typography } from "@mui/material";
 
-export function AdminPage() {
+export default function AdminPage() {
     return (
     <Box sx={{ position: "fixed", top: 64, left: 0, width: "100vw", height: "calc(100vh - 64px - 56px)", 
         overflow: "hidden", display: "flex", flexDirection:"column", justifyContent: "space-evenly", 
@@ -27,5 +27,3 @@ export function AdminPage() {
     </Box>
     );
 }
-
-export default AdminPage;

@@ -3,7 +3,7 @@ import SearchBar from "@/components/searchbar";
 import SummaryDetails from "@/components/summarydetails";
 import { Box, List, ListItem, Paper } from "@mui/material";
 
-export function ListPage() {
+export default function ListPage() {
     // TODO: Consider if we want to add location bar here 
 
     return (
@@ -29,5 +29,3 @@ export function ListPage() {
         </Box> 
     );
 }
-
-export default ListPage;
