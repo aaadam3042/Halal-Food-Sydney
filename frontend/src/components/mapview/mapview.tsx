@@ -7,7 +7,7 @@ export function MapView() {
     // Card pops up when you click location over bottom side of map
 
     // API Key for Google Maps or set to empty string if not available
-    const Maps_API_Key = process.env.GOOGLE_MAPS_API_KEY || "";
+    // const Maps_API_Key = process.env.GOOGLE_MAPS_API_KEY || "";
 
     // TODO: Integrate an actual map - THIS IS JUST A PLACEHOLDER
 
