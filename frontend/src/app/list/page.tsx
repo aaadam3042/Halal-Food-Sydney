@@ -27,7 +27,7 @@ export default function ListPage() {
             </List>
             </Paper>
 
-            <DetailCard name="Butcher 1" address="1 Main St, Lakemba" status="Open Now" />
+            <DetailCard name="Butcher 1" address="1 Main St, Lakemba" status="Open Now" active={true} />
             
         </Box> 
     );
