@@ -1,3 +1,4 @@
+import DetailCard from "@/components/detailcard";
 import LocationFilters from "@/components/locationfilters";
 import SearchBar from "@/components/searchbar";
 import SummaryDetails from "@/components/summarydetails";
@@ -16,7 +17,7 @@ export default function ListPage() {
 
             <SearchBar />
 
-            <Paper elevation={3} sx={{ borderRadius: "10px"}}>
+            <Paper elevation={3} sx={{ borderRadius: "10px", zIndex:1}}>
             <List sx={{ height: "70vh", overflow: "auto", minWidth: "25rem", bgcolor: "background.paper", color: "black", margin: "5px" }}>
                 {[1,2,3,4,5,6,7,8,9].map((value) => (
                     <ListItem key={value} sx={{py: "10px"}}>
@@ -25,6 +26,8 @@ export default function ListPage() {
                 ))}
             </List>
             </Paper>
+
+            <DetailCard name="Butcher 1" address="1 Main St, Lakemba" status="Open Now" />
             
         </Box> 
     );
