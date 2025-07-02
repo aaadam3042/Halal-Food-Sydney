@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Card, IconButton, Typography } from "@mui/material";
+import { Box, Card, ClickAwayListener, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 interface DetailCardProps {
@@ -15,6 +15,7 @@ export function DetailCard({name, address, status, active, onClose}: DetailCardP
     if (!active) return null;
 
     return(
+        <ClickAwayListener onClickAway={onClose}>
         <Card sx={{ 
             position: "fixed",
             bottom: "25vh",    // This centers the card vertically. It is 50vh from the bottom minus half the height of the card
@@ -35,6 +36,7 @@ export function DetailCard({name, address, status, active, onClose}: DetailCardP
             </Box>
 
         </Card>
+        </ClickAwayListener>
     );
 }
 
