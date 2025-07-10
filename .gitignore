@@ -47,3 +47,4 @@ coverage/
 *.db
 
 # Ignore by default, app/frontend stuff is ignored in frontend/.gitignore
+util/hfs-firebaseadmin-key.json
