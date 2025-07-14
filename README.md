@@ -69,3 +69,7 @@ Google login via Firebase Authentication is required to propose entries or acces
 ## ☪️ About
 
 This app is being built to help Muslim communities make informed decisions about halal food, especially regarding hand-slaughtered meat, in a way that’s accurate, respectful, and locally maintained.
+
+## Attribution
+
+This app uses some data from the Geocoding Nominatim API -> © OpenStreetMap

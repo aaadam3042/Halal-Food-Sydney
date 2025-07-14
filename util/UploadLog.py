@@ -1,9 +1,13 @@
+# Attribution: OpenStreetMap Nominatim API | © OpenStreetMap
+
 import firebase_admin
 import google.cloud
 from firebase_admin import credentials, firestore
 import csv
 import re
 import logging
+import requests
+import time
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
@@ -154,6 +158,41 @@ def format_date(date_str: str) -> str:
     
     return date_str  # Return original if can't parse
 
+def get_coordinates_from_address(address: str) -> Optional[Dict]:
+    # Attribution: OpenStreetMap Nominatim API | © OpenStreetMap
+    """Fetch coordinates from OpenStreetMap Nominatim API, respecting usage policy."""
+    if not address:
+        return ""
+
+    logger.info(f"Fetching coordinates for address: {address}")
+    # Respect Nominatim usage policy: max 1 request/sec
+    time.sleep(1)
+
+    url = f'https://nominatim.openstreetmap.org/search?q={address}&format=json&limit=1'
+    headers = {
+        "User-Agent": "HalalFoodSydneyUploader/1.0 (contact: aaadam3042@gmail.com)",
+    }
+
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+        if not data:
+            logger.warning("No results from geocoding API for address: %s", address)
+            return ""
+        lat = data[0].get('lat')
+        lon = data[0].get('lon')
+        if lat and lon:
+            # Attribution required by ODbL: OpenStreetMap contributors
+            logger.info("Coordinates fetched from OpenStreetMap Nominatim (ODbL © OpenStreetMap contributors)")
+            return f"({lat}, {lon})"
+        else:
+            logger.warning("Missing lat/lon in geocoding API response for address: %s", address)
+            return ""
+    except Exception as e:
+        logger.error(f"Error fetching coordinates for address {address}: {str(e)}")
+        return ""
+
 def create_status_history(last_contact: str, handslaughter_status: str) -> List[Dict]:
     """Create initial status history entry."""
     if not last_contact or not handslaughter_status:
@@ -186,7 +225,7 @@ def process_butchers_csv(filename: str) -> List[Dict]:
                 continue
             
             name = row[0].strip() if row[0] else ""
-            if not name:  # Skip rows without names
+            if not name or name=="Butcher Name":  # Skip rows without names
                 logger.warning(f"Skipping row {row_num}: No name provided")
                 continue
             
@@ -200,6 +239,9 @@ def process_butchers_csv(filename: str) -> List[Dict]:
             
             # Parse contact information
             address, phone, website = parse_contact_info(contact_details)
+
+            # Get coords from address if coords are not provided
+            coordinates = get_coordinates_from_address(address) if not coordinates else coordinates
             
             # Parse status
             handslaughter_status, general_halal_status = parse_status(status)
@@ -289,7 +331,7 @@ def process_restaurants_csv(filename: str) -> List[Dict]:
                 continue
             
             name = row[0].strip() if row[0] else ""
-            if not name:  # Skip rows without names
+            if not name or name=="Restaurant Name":  # Skip rows without names
                 logger.warning(f"Skipping row {row_num}: No name provided")
                 continue
             
@@ -304,6 +346,9 @@ def process_restaurants_csv(filename: str) -> List[Dict]:
             
             # Parse contact information from address (might contain phone/website)
             cleaned_address, phone, website = parse_contact_info(address)
+
+            # Get coords from address if coords are not provided
+            coordinates = get_coordinates_from_address(cleaned_address) if not coordinates else coordinates
             
             # Parse status
             handslaughter_status, general_halal_status = parse_status(status)
