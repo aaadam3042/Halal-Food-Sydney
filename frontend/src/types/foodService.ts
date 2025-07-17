@@ -38,3 +38,5 @@ export const FoodService = z.object({
 });
 
 export const FoodServiceArray = z.array(FoodService);
+export type FoodService = z.infer<typeof FoodService>;
+export type FoodServiceArray = z.infer<typeof FoodServiceArray>;

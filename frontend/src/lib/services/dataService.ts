@@ -30,7 +30,7 @@ export const getFoodServicesInRadius = async (lng: number, lat: number, radius: 
     }));
 
     const result = FoodServiceArray.parse(foodServices);
-    return result;
+    return result.sort((a, b) => a.name.localeCompare(b.name));
 };
 
 // Get all food services
@@ -47,7 +47,7 @@ export const getAllFoodServices = async () => {
     }));
 
     const result = FoodServiceArray.parse(foodServices);
-    return result;
+    return result.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 // Get all restaurants
@@ -63,7 +63,7 @@ export const getAllRestaurants = async () => {
     }));
 
     const result = FoodServiceArray.parse(restaurants);
-    return result;
+    return result.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 // Get all butchers
@@ -79,8 +79,7 @@ export const getAllButchers = async () => {
     }));
 
     const result = FoodServiceArray.parse(butchers);
-    return result;
+    return result.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 // TODO: On snapshot this stuff to keep updated.
-// TODO: Map to FoodService type 
