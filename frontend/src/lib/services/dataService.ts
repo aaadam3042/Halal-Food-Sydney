@@ -1,8 +1,7 @@
-import { app, analytics } from '@/config/firebase';
+import { db, analytics } from '@/config/firebase';
 import { FoodService, FoodServiceArray } from '@/types/foodService';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 
-const db = getFirestore(app);
 const FoodServices = collection(db, 'FoodServices');
 
 // Get documents within a given radius forming a bounding box around a given location
