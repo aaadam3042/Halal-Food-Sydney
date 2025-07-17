@@ -258,45 +258,45 @@ def process_butchers_csv(filename: str) -> List[Dict]:
             
             # Create document
             doc = {
-                "Name": name,
-                "Type": "Butcher"
+                "name": name,
+                "type": "Butcher"
             }
             
             # Add address if exists
             if address:
-                doc["Address"] = address
+                doc["address"] = address
             
             # Add contact map if phone or website exists
             contact_map = {}
             if phone:
-                contact_map["Phone"] = phone
+                contact_map["phone"] = phone
             if website:
-                contact_map["Website"] = website
+                contact_map["website"] = website
             if contact_map:
-                doc["Contact"] = contact_map
+                doc["contact"] = contact_map
             
             # Add status map
             status_map = {}
             if handslaughter_status:
-                status_map["Handslaughter"] = handslaughter_status
+                status_map["handslaughtered"] = handslaughter_status
             if general_halal_status:
-                status_map["General Halal"] = general_halal_status
+                status_map["generalHalal"] = general_halal_status
             if status_map:
-                doc["Status"] = status_map
+                doc["status"] = status_map
             
             # Add suppliers
             if meat_suppliers:
-                doc["Meat Supplier"] = meat_suppliers
+                doc["meatSupplier"] = meat_suppliers
             if chicken_suppliers:
-                doc["Chicken Supplier"] = chicken_suppliers
+                doc["chickenSupplier"] = chicken_suppliers
             
             # Add last contacted
             if formatted_date:
-                doc["Last Contact"] = formatted_date
+                doc["lastContact"] = formatted_date
             
             # Add notes
             if notes:
-                doc["Notes"] = notes
+                doc["notes"] = notes
             
             # Add geolocation
             if geolocation:
@@ -305,7 +305,7 @@ def process_butchers_csv(filename: str) -> List[Dict]:
             # Add status history
             status_history = create_status_history(last_contacted, handslaughter_status)
             if status_history:
-                doc["Status History"] = status_history
+                doc["statusHistory"] = status_history
             
             documents.append(doc)
             logger.info(f"Processed butcher: {name}")
@@ -365,45 +365,45 @@ def process_restaurants_csv(filename: str) -> List[Dict]:
             
             # Create document
             doc = {
-                "Name": name,
-                "Type": "Restaurant"
+                "name": name,
+                "type": "Restaurant"
             }
             
             # Add address if exists
             if cleaned_address:
-                doc["Address"] = cleaned_address
+                doc["address"] = cleaned_address
             
             # Add contact map if phone or website exists
             contact_map = {}
             if phone:
-                contact_map["Phone"] = phone
+                contact_map["phone"] = phone
             if website:
-                contact_map["Website"] = website
+                contact_map["website"] = website
             if contact_map:
-                doc["Contact"] = contact_map
+                doc["contact"] = contact_map
             
             # Add status map
             status_map = {}
             if handslaughter_status:
-                status_map["Handslaughter"] = handslaughter_status
+                status_map["handslaughtered"] = handslaughter_status
             if general_halal_status:
-                status_map["General Halal"] = general_halal_status
+                status_map["generalHalal"] = general_halal_status
             if status_map:
-                doc["Status"] = status_map
+                doc["status"] = status_map
             
             # Add suppliers
             if meat_suppliers:
-                doc["Meat Supplier"] = meat_suppliers
+                doc["meatSupplier"] = meat_suppliers
             if chicken_suppliers:
-                doc["Chicken Supplier"] = chicken_suppliers
+                doc["chickenSupplier"] = chicken_suppliers
             
             # Add last contacted
             if formatted_date:
-                doc["Last Contact"] = formatted_date
+                doc["lastContact"] = formatted_date
             
             # Add notes
             if notes:
-                doc["Notes"] = notes
+                doc["notes"] = notes
             
             # Add geolocation
             if geolocation:
@@ -412,7 +412,7 @@ def process_restaurants_csv(filename: str) -> List[Dict]:
             # Add status history
             status_history = create_status_history(last_contacted, handslaughter_status)
             if status_history:
-                doc["Status History"] = status_history
+                doc["statusHistory"] = status_history
             
             documents.append(doc)
             logger.info(f"Processed restaurant: {name}")
