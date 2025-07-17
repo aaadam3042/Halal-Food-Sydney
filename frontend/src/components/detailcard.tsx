@@ -1,16 +1,15 @@
 import React from "react";
 import { Box, Card, ClickAwayListener, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { FoodService } from "@/types/foodService";
 
 interface DetailCardProps {
-    name: string;
-    address: string;
-    status: string;
-    active: Boolean;
+    foodService: FoodService | undefined;
+    active: Boolean | undefined;
     onClose: () => void;
 }
 
-export function DetailCard({name, address, status, active, onClose}: DetailCardProps) {
+export function DetailCard({foodService, active, onClose}: DetailCardProps) {
 
     if (!active) return null;
 
@@ -26,13 +25,13 @@ export function DetailCard({name, address, status, active, onClose}: DetailCardP
         }}>
             <Box display='flex' flexDirection='column'  marginX={5} marginTop={2}>
                 <Box display='flex' flexDirection='row' justifyContent='space-between'>
-                    <Typography variant="h5"> {name} </Typography>
+                    <Typography variant="h5"> {foodService?.name} </Typography>
                     <IconButton onClick={onClose} >
                         <CloseIcon fontSize='large' />
                     </IconButton>
                 </Box>
 
-                <Typography> {address} </Typography>
+                <Typography> {foodService?.address} </Typography>
             </Box>
 
         </Card>

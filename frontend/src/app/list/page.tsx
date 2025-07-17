@@ -5,28 +5,40 @@ import DetailCard from "@/components/detailcard";
 import LocationFilters from "@/components/locationfilters";
 import SearchBar from "@/components/searchbar";
 import SummaryDetails from "@/components/summarydetails";
-import { Box, List, ListItem, Paper } from "@mui/material";
+import { Box, CircularProgress, List, ListItem, Paper, Typography } from "@mui/material";
+import { getAllFoodServices } from "@/lib/services/dataService";
+import { FoodService } from "@/types/foodService";
 
 export default function ListPage() {
-    // TODO: Consider if we want to add location bar here 
-    const [cardData, setCardData] = React.useState<{
-        name: string;
-        address: string;
-        status: string;
-        active: boolean;
-    }>({
-        name: "",
-        address: "",
-        status: "",
-        active: false,
-    });
+    // TODO: Consider if we want to add location bar here. The logic may be no as we just list all in alphabetical order. Use map for location based
 
-    const handleOpenCard = (name: string, address: string, status: string) => {
-        setCardData({name, address, status, active: true});
+    const [dbData, setDbData] = React.useState<FoodService[]>();
+    React.useEffect(() => {
+        getAllFoodServices().then((data) => {
+            // If data is empty, we can handle it here
+            if (!data || data.length === 0) {
+                throw new Error("No food services found");
+            }
+            setDbData(data);
+        }).catch((error) => {
+            console.error("Error fetching food services:", error);
+        });
+    }, []);
+
+    const [cardData, setCardData] = React.useState<{
+        foodService: FoodService;
+        active: boolean;
+    }>();
+
+    const handleOpenCard = (foodService: FoodService) => { // TODO: properly pass data into cards
+        setCardData({foodService, active: true});
     };
 
     const handCloseCard = () => {
-        setCardData((prev) => ({ ...prev, active: false}));
+        setCardData((prev) => {
+            if (!prev) return prev;
+            return {...prev, active: false};
+            });
     };
 
     return (
@@ -41,16 +53,25 @@ export default function ListPage() {
 
             <Paper elevation={3} sx={{ borderRadius: "10px", zIndex:1}}>
             <List sx={{ height: "70vh", overflow: "auto", minWidth: "25rem", bgcolor: "background.paper", color: "black", margin: "5px" }}>
-                {[1,2,3,4,5,6,7,8,9].map((value) => (
-                    <ListItem key={value} sx={{py: "10px"}}
-                    onClick={() => handleOpenCard(`Butcher ${value}`, `${value} Main St, Lakemba`, "Halal")} >
-                        <SummaryDetails name={`Butcher ${value}`} address={`${value} Main St, Lakemba`} />
+                {dbData ? 
+                    dbData.map((value) => (
+                    <ListItem key={value.id} sx={{py: "20px", borderBottom: "1px solid #c4c4c4"}}
+                    onClick={() => handleOpenCard(value)} >
+                        <SummaryDetails name={value.name} address={value.address ?? ""} /> 
                     </ListItem>
-                ))}
+                    )) 
+                : 
+                <Box sx={{ display: "flex", "flexDirection": "column", alignItems: "center", justifyContent: "center" }}>
+                    <Typography variant="h6" sx={{ textAlign: "center", padding: "20px" }}>
+                        Loading food services...
+                    </Typography>
+                    <CircularProgress />
+                </Box>
+                }
             </List>
             </Paper>
 
-            <DetailCard name={cardData.name} address={cardData.address} status={cardData.status} active={cardData.active} onClose={handCloseCard} />
+            <DetailCard foodService={cardData?.foodService} active={cardData?.active} onClose={handCloseCard} />
             
         </Box> 
     );
