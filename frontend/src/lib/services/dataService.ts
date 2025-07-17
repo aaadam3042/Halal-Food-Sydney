@@ -1,6 +1,6 @@
-import { db, analytics } from '@/config/firebase';
+import { db } from '@/config/firebase';
 import { FoodService, FoodServiceArray } from '@/types/foodService';
-import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const FoodServices = collection(db, 'FoodServices');
 
