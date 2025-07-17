@@ -87,7 +87,7 @@ def parse_coordinates(coord_str: str) -> Optional[Dict]:
 def parse_status(status_str: str) -> Tuple[str, str]:
     """Parse status string to get handslaughter and general halal status."""
     if not status_str:
-        return "", "Pending"
+        return "", "Pending Review"
     
     status_str = status_str.strip()
     
@@ -104,7 +104,7 @@ def parse_status(status_str: str) -> Tuple[str, str]:
     if handslaughter.lower() in ["confirmed", "verified"]:
         general_halal = "Confirmed"
     else:
-        general_halal = "Pending"
+        general_halal = "Pending Review"
     
     return handslaughter, general_halal
 
