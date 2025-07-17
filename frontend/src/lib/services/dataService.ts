@@ -21,6 +21,9 @@ export const getFoodServicesInRadius = async (lng: number, lat: number, radius: 
     );
 
     const querySnapshot = await getDocs(q);
+    if (querySnapshot.empty) {
+        throw new Error('No food services found');
+    }   
     const foodServices = querySnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
@@ -33,6 +36,11 @@ export const getFoodServicesInRadius = async (lng: number, lat: number, radius: 
 // Get all food services
 export const getAllFoodServices = async () => {
     const querySnapshot = await getDocs(FoodServices);
+    // Handle promise rejection 
+    if (querySnapshot.empty) {
+        throw new Error('No food services found');
+    }   
+
     const foodServices = querySnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
@@ -46,6 +54,9 @@ export const getAllFoodServices = async () => {
 export const getAllRestaurants = async () => {
     const q = query(FoodServices, where('type', '==', 'restaurant'));
     const querySnapshot = await getDocs(q);
+    if (querySnapshot.empty) {
+        throw new Error('No food services found');
+    }   
     const restaurants = querySnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
@@ -59,6 +70,9 @@ export const getAllRestaurants = async () => {
 export const getAllButchers = async () => {
     const q = query(FoodServices, where('type', '==', 'butcher'));
     const querySnapshot = await getDocs(q);
+    if (querySnapshot.empty) {
+        throw new Error('No food services found');
+    }   
     const butchers = querySnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()

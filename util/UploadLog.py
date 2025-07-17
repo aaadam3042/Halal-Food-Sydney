@@ -203,8 +203,8 @@ def create_status_history(last_contact: str, handslaughter_status: str) -> List[
         return []
     
     return [{
-        "Date": formatted_date,
-        "Status": f"{handslaughter_status} - Handslaughter"
+        "date": formatted_date,
+        "status": f"{handslaughter_status} - Handslaughtered"
     }]
 
 def process_butchers_csv(filename: str) -> List[Dict]:

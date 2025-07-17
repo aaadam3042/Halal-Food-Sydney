@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const HalalStatus = z.object({
   generalHalal: z.string().default("Pending Review"),
-  handSlaughter: z.string().default("Pending Review"),
+  handSlaughtered: z.string().default("Pending Review"),
 });
 
 const StatusHistoryEntry = z.object({
@@ -31,7 +31,7 @@ export const FoodService = z.object({
     notes: z.string().default(""),
     status: HalalStatus.default({
         generalHalal: "Pending Review",
-        handSlaughter: "Pending Review"
+        handSlaughtered: "Pending Review"
     }),
     statusHistory: z.array(StatusHistoryEntry).default([]),
     geolocation: GeoLocation.optional(),
