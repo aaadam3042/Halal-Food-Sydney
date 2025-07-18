@@ -6,7 +6,7 @@ A mobile-first web app for discovering halal food locations in Sydney, with a fo
 
 ## 📦 Tech Stack
 
-- **Frontend**: React (Vite) + Tailwind CSS (mobile-first design) + MaterialUI
+- **Frontend**: React (NextJS) + Tailwind CSS (mobile-first design) + MaterialUI
 - **Backend**: Firebase (Firestore + Authentication)
 - **Map**: Google Maps
 
