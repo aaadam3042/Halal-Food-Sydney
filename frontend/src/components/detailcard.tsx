@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Card, ClickAwayListener, IconButton, Typography } from "@mui/material";
+import { Box, Card, ClickAwayListener, Divider, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { FoodService } from "@/types/foodService";
 import { StatusChip, StatusType } from "./statuschip";
@@ -33,9 +33,11 @@ export function DetailCard({foodService, active, onClose}: DetailCardProps) {
                 </Box>
 
                 <Typography> {foodService?.address} </Typography>
+                <Divider sx={{ marginY: 1 }} />
+
                 <Box sx={{ display: 'flex', flexDirection: "row", gap: 1, mt: 1 }}>
-                <StatusChip status={foodService?.status.generalHalal || "undefined"} type={StatusType.General} />
-                <StatusChip status={foodService?.status.handslaughtered || "undefined"} type={StatusType.Handslaughtered} />
+                <StatusChip status={foodService?.status.generalHalal} type={StatusType.General} />
+                <StatusChip status={foodService?.status.handslaughtered} type={StatusType.Handslaughtered} />
                 </Box>
 
             </Box>

@@ -13,7 +13,7 @@ const halalColourMap: Record<string, string> = {
     "Potential Issues": "#dd415e", 
 }
 
-export function StatusChip({status, type}: {status: string, type: StatusType}) {
+export function StatusChip({status = "Error", type}: {status?: string, type: StatusType}) {
 
 
     const chipColour = halalColourMap[status] ||  "#ff008b"; 
