@@ -7,6 +7,7 @@ interface SummaryDetailsProps {
     address: string;
     halalStatus: string;
     handSlaughtered: string;
+    type: string;
 }
 
 const halalColourMap: Record<string, string> = {
@@ -17,15 +18,21 @@ const halalColourMap: Record<string, string> = {
     "Potential Issues": "#dd415e", 
 }
 
-export function SummaryDetails({name, address, halalStatus, handSlaughtered}: SummaryDetailsProps) {
-    const halalColour = halalColourMap[halalStatus]; 
-    const handSlaughteredColour = halalColourMap[handSlaughtered]; 
-
+export function SummaryDetails({name, address, halalStatus, handSlaughtered, type}: SummaryDetailsProps) {
     return (
     <Box sx={{ width: "400px", display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
         <Box sx={{flexDirection: "column"}}>
-        <Typography variant="h5" component="div"> {name} </Typography>
-        <Typography sx={{ mb: 1.5, fontSize: 14 }} color="text.secondary" flexWrap='wrap'> {address} </Typography>
+
+            <Typography variant="h5" component="div" sx={{ display: "inline", mr: 1 }}>
+                {name}
+                
+                <Typography component="span" sx={{ fontSize: 12, color: "text.secondary", ml: 1, justifySelf: "center" }}>
+                    ({type})
+                </Typography>
+                
+            </Typography>
+            
+            <Typography sx={{ mb: 1.5, fontSize: 14 }} color="text.secondary" flexWrap='wrap'> {address} </Typography>
 
             <Box sx={{ display: 'flex', flexDirection: "row", gap: 1, mt: 1 }}>
                 <StatusChip status={halalStatus} type={StatusType.General} />

@@ -41,6 +41,11 @@ export default function ListPage() {
             });
     };
 
+    const cardColour = {
+        "Butcher": "#fbffe9",
+        "Restaurant": "#e0f7fa",
+    }
+
     return (
         <Box sx={{ position: "fixed", top: 64, left: 0, width: "100vw", height: "calc(100vh - 64px - 56px)", 
         overflow: "hidden", display: "flex", flexDirection:"column", justifyContent: "space-evenly", 
@@ -55,9 +60,9 @@ export default function ListPage() {
             <List sx={{ height: "70vh", overflow: 'auto', overflowX:'hidden', minWidth: "25rem", bgcolor: "background.paper", color: "black", margin: "5px" }}>
                 {dbData ? 
                     dbData.map((value) => (
-                    <ListItem key={value.id} sx={{py: "20px", borderBottom: "1px solid #c4c4c4"}}
+                    <ListItem key={value.id} sx={{py: "20px", borderBottom: "1px solid black", backgroundColor: cardColour[value.type]}}
                     onClick={() => handleOpenCard(value)} >
-                        <SummaryDetails name={value.name} address={value.address ?? ""} halalStatus={value.status.generalHalal} handSlaughtered={value.status.handslaughtered} /> 
+                        <SummaryDetails name={value.name} address={value.address ?? ""} halalStatus={value.status.generalHalal} handSlaughtered={value.status.handslaughtered} type={value.type} /> 
                     </ListItem>
                     )) 
                 : 
