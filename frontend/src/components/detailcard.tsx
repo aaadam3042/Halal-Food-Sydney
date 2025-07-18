@@ -10,9 +10,21 @@ interface DetailCardProps {
     onClose: () => void;
 }
 
+export const cardColour = {
+    "Butcher": "#fbffe9",
+    "Restaurant": "#e0f7fa",
+}
+
 export function DetailCard({foodService, active, onClose}: DetailCardProps) {
 
     if (!active) return null;
+
+    if (!foodService) {
+        console.error("DetailCard: foodService is undefined");
+        return null;
+    }
+
+    const cardTypeSymbol = foodService.type == "Restaurant" ? "🍔" : (foodService.type == "Butcher") ?  "🥩" : "⚠️"
 
     return(
         <ClickAwayListener onClickAway={onClose}>
@@ -22,11 +34,17 @@ export function DetailCard({foodService, active, onClose}: DetailCardProps) {
             height: "50vh", // TODO: Fix this cos a phone would be shaped weird
             width: "50vw",
             borderRadius: "10px",
-            zIndex: 2
+            zIndex: 2,
+            backgroundColor: cardColour[foodService.type]
         }}>
+
+            {/* TODO: Add rest of data */}
             <Box display='flex' flexDirection='column'  marginX={5} marginTop={2}>
                 <Box display='flex' flexDirection='row' justifyContent='space-between'>
+                    <Box display='flex' flexDirection='row' gap={1} alignItems='center'>
                     <Typography variant="h5"> {foodService?.name} </Typography>
+                    <Typography variant="h4"> {cardTypeSymbol} </Typography>
+                    </Box>
                     <IconButton onClick={onClose} >
                         <CloseIcon fontSize='large' />
                     </IconButton>

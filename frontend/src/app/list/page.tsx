@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import DetailCard from "@/components/detailcard";
+import { DetailCard, cardColour } from "@/components/detailcard";
 import LocationFilters from "@/components/locationfilters";
 import SearchBar from "@/components/searchbar";
 import SummaryDetails from "@/components/summarydetails";
@@ -40,11 +40,6 @@ export default function ListPage() {
             return {...prev, active: false};
             });
     };
-
-    const cardColour = {
-        "Butcher": "#fbffe9",
-        "Restaurant": "#e0f7fa",
-    }
 
     return (
         <Box sx={{ position: "fixed", top: 64, left: 0, width: "100vw", height: "calc(100vh - 64px - 56px)", 
