@@ -1,5 +1,6 @@
 import { Box, Chip, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { StatusChip, StatusType } from "./statuschip";
 
 interface SummaryDetailsProps {
     name: string;
@@ -27,8 +28,8 @@ export function SummaryDetails({name, address, halalStatus, handSlaughtered}: Su
         <Typography sx={{ mb: 1.5, fontSize: 14 }} color="text.secondary" flexWrap='wrap'> {address} </Typography>
 
             <Box sx={{ display: 'flex', flexDirection: "row", gap: 1, mt: 1 }}>
-                <Chip label={`${halalStatus} - Halal`} size="small" sx={{ boxShadow: 2, backgroundColor: halalColour, px: 0.5, border: '1px solid red'}} />
-                <Chip label={`${handSlaughtered} - HS`} size="small" sx={{ boxShadow: 2, backgroundColor: handSlaughteredColour, px: 0.5, border: '1px solid orange'}} />
+                <StatusChip status={halalStatus} type={StatusType.General} />
+                <StatusChip status={handSlaughtered} type={StatusType.Handslaughtered} />
             </Box>
         </Box>
         
