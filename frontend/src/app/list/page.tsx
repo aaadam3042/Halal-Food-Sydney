@@ -30,7 +30,7 @@ export default function ListPage() {
         active: boolean;
     }>();
 
-    const handleOpenCard = (foodService: FoodService) => { // TODO: properly pass data into cards
+    const handleOpenCard = (foodService: FoodService) => { 
         setCardData({foodService, active: true});
     };
 
@@ -52,12 +52,12 @@ export default function ListPage() {
             <SearchBar />
 
             <Paper elevation={3} sx={{ borderRadius: "10px", zIndex:1}}>
-            <List sx={{ height: "70vh", overflow: "auto", minWidth: "25rem", bgcolor: "background.paper", color: "black", margin: "5px" }}>
+            <List sx={{ height: "70vh", overflow: 'auto', overflowX:'hidden', minWidth: "25rem", bgcolor: "background.paper", color: "black", margin: "5px" }}>
                 {dbData ? 
                     dbData.map((value) => (
                     <ListItem key={value.id} sx={{py: "20px", borderBottom: "1px solid #c4c4c4"}}
                     onClick={() => handleOpenCard(value)} >
-                        <SummaryDetails name={value.name} address={value.address ?? ""} /> 
+                        <SummaryDetails name={value.name} address={value.address ?? ""} halalStatus={value.status.generalHalal} handSlaughtered={value.status.handslaughtered} /> 
                     </ListItem>
                     )) 
                 : 
