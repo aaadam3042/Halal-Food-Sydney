@@ -1,5 +1,6 @@
 'use client' // Error boundaries must be Client Components
  
+import { Box, Button, Container, Typography } from '@mui/material'
 import { useEffect } from 'react'
  
 export default function Error({
@@ -15,17 +16,27 @@ export default function Error({
   }, [error])
  
   return (
-    <div>
-      <h2>Something went critically wrong!</h2>
-      <h3> Try again or contact the admin. </h3>
-      <button
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
-      >
-        Try again
-      </button>
-    </div>
+    <Container>
+      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", 
+        position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+        zIndex: 1000, textAlign: "center",}}>
+      
+        <Box sx={{backgroundColor: "white", width: "20rem", rounded: "sm", p: 4, boxShadow: 3, zIndex: 50}}>
+            <Typography variant="h4" sx={{marginBottom: 2, color: "#9e0812"}}> 
+                Something went critically wrong!
+            </Typography>
+
+            <Typography variant="h6" sx={{marginBottom: 2, color: "#9e0812"}}> 
+                Try again or contact the admin.
+            </Typography>
+
+            <Button onClick={() => reset()} sx={{backgroundColor: "#364152", color: "white", 
+                px: 2, py: 1, boxShadow: 2, "&:hover": {backgroundColor: "#9e0812"} 
+            }} >
+                Try again
+            </Button>
+        </Box>
+    </Box>
+    </Container>
   )
 }
