@@ -34,7 +34,7 @@ export default function ListPage() {
         setCardData({foodService, active: true});
     };
 
-    const handCloseCard = () => {
+    const handleCloseCard = () => {
         setCardData((prev) => {
             if (!prev) return prev;
             return {...prev, active: false};
@@ -76,7 +76,7 @@ export default function ListPage() {
             </List>
             </Paper>
 
-            <DetailCard foodService={cardData?.foodService} active={cardData?.active} onClose={handCloseCard} />
+            <DetailCard foodService={cardData?.foodService} active={cardData?.active} onClose={handleCloseCard} />
             
         </Box> 
     );

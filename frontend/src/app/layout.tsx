@@ -5,6 +5,9 @@ import "./globals.css";
 import React from "react";
 import Header from "../components/header";
 import NavBar from "../components/navbar";
+import { ErrorProvider } from "@/contexts/errorContext";
+// import { AuthProvider } from "@/contexts/authContext";
+import ErrorPane from "@/components/errorPane";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,16 +35,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-
-        <AppRouterCacheProvider>
-
-        <Header />
-
-          {children} 
-
-        <NavBar />
-
-        </AppRouterCacheProvider>
+        <ErrorProvider>
+        {/* <AuthProvider> */}
+          <ErrorPane />
+          
+            <AppRouterCacheProvider>
+              <Header />
+              {children} 
+              <NavBar />
+            </AppRouterCacheProvider>
+          
+        {/* </AuthProvider> */}
+        </ErrorProvider>
       </body>
     </html>
   );
