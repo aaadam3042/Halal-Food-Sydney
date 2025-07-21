@@ -19,7 +19,7 @@ export function StatusChip({status = "Error", type}: {status?: string, type: Sta
     const chipColour = halalColourMap[status] ||  "#ff008b"; 
 
     return (
-        <Box sx={{ pointerEvents: "none"}}>
+        <Box sx={{ pointerEvents: "none"}}> {/* This prevents MUI NextJS bug where clicking even though unclickable causes a error log */}
         <Chip clickable={false} label={`${status} - ${type.toString()}`} onClick={undefined} size="small" sx={{ boxShadow: 2, backgroundColor: chipColour, px: 0.5, border: '1px solid red'}} />
         </ Box>
     );
