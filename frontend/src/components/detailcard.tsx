@@ -78,10 +78,10 @@ export function DetailCard({foodService, active, onClose}: DetailCardProps) {
                 <Divider sx={{ my: 3 }} /> {/* Note that this will put double divider without contact info and notes. (but always will be last contact wiht n/a??) */}
                 
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 1 }}>
-                    {foodService.contact?.phone && <Typography> Phone: {foodService.contact.phone} </Typography>}
-                    {foodService.contact?.email && <Typography> Email: <Link 
+                    {foodService.contact?.phone && <Typography> <b>Phone:</b> {foodService.contact.phone} </Typography>}
+                    {foodService.contact?.email && <Typography> <b>Email:</b> <Link 
                         href={`mailto:${foodService.contact.email}?subject=Halal\ Enquiry`}> {foodService.contact.email} </Link> </Typography>}
-                    {foodService.contact?.website && <Typography> Website: <Link target="_blank" rel="noreferrer" 
+                    {foodService.contact?.website && <Typography> <b>Website:</b> <Link target="_blank" rel="noreferrer" 
                         href={`https://${foodService.contact.website}`}> {foodService.contact.website} </Link> </Typography>}
                 </Box>
 
