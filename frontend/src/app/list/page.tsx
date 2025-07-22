@@ -2,7 +2,7 @@
 
 import React from "react";
 import { DetailCard, cardColour } from "@/components/detailcard";
-import LocationFilters from "@/components/locationfilters";
+import { LocationFilters, LocationFiltersTypes } from "@/components/locationfilters";
 import SearchBar from "@/components/searchbar";
 import SummaryDetails from "@/components/summarydetails";
 import { Box, CircularProgress, List, ListItem, Paper, Typography } from "@mui/material";
@@ -11,6 +11,7 @@ import { FoodService } from "@/types/foodService";
 
 export default function ListPage() {
     // TODO: Consider if we want to add location bar here. The logic may be no as we just list all in alphabetical order. Use map for location based
+    const [filters, setFilters] = React.useState<LocationFiltersTypes[]>([LocationFiltersTypes.Restaurant, LocationFiltersTypes.Butcher]);
 
     const [dbData, setDbData] = React.useState<FoodService[]>();
     React.useEffect(() => {
@@ -46,8 +47,7 @@ export default function ListPage() {
         overflow: "hidden", display: "flex", flexDirection:"column", justifyContent: "space-evenly", 
         alignItems: "center", backgroundImage: "url(/geometric-background.png)",
         backgroundSize: "30%", backgroundPosition: "center", backgroundRepeat: "repeat"}}>
-
-            <LocationFilters />
+            <LocationFilters filters={filters} setFilters={setFilters} />
 
             <SearchBar />
 
