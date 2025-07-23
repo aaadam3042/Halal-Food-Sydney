@@ -49,12 +49,15 @@ export function DetailCard({foodService, active, onClose}: DetailCardProps) {
                 <Divider />
 
                 <Box my={2}>
-                {foodService.statusHistory.map((value, idx) => (                    
+                {foodService.statusHistory.map((value, idx) => {    
+                    let [fsStatus, fsType] = value.status.split(" - ")
+                    return(          
                     <Box my={2} display="flex" flexDirection="row" justifyContent="start" key={idx}> 
                     <Typography variant="body1" fontWeight="bold" mr={1}> {value.date} - </Typography>
-                    <StatusChip type={(value.status.split(" - ")[1] == "Handslaughtered") ? StatusType.Handslaughtered : StatusType.General} status={value.status.split(" - ")[0]} />
+                    <StatusChip type={(fsType == "Handslaughtered") ? StatusType.Handslaughtered : StatusType.General} status={fsStatus} />
                     </Box>
-                )).reverse()}
+                    );
+                }).reverse()}
                 </Box>
 
             </Box>
