@@ -4,7 +4,7 @@ import { Box, Chip } from "@mui/material";
 import { cardColour } from "./detailcard";
 
 export enum LocationFiltersTypes {
-    Butcher, Restaurant
+    Butcher = "Butcher", Restaurant = "Restaurant"
 }
 
 export function LocationFilters({filters, setFilters}: {filters: LocationFiltersTypes[], setFilters: (filters: LocationFiltersTypes[]) => void}) {
