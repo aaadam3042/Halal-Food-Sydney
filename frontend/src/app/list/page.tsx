@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { DetailCard, cardColour } from "@/components/detailcard";
 import { LocationFilters, LocationFiltersTypes } from "@/components/locationfilters";
 import SearchBar from "@/components/searchbar";
@@ -14,7 +14,13 @@ export default function ListPage() {
     const [locationFilters, setLocationFilters] = React.useState<LocationFiltersTypes[]>([LocationFiltersTypes.Restaurant, LocationFiltersTypes.Butcher]);
     const [dbData, setDbData] = React.useState<FoodService[]>();
     const [hasLoadedData, setHasLoadedData] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [cardData, setCardData] = React.useState<{
+        foodService: FoodService;
+        active: boolean;
+    }>();
 
+    // Load Data from Firebase
     React.useEffect(() => {
         getAllFoodServices().then((data) => {
             // If data is empty, we can handle it here
@@ -28,26 +34,36 @@ export default function ListPage() {
         });
     }, []);
 
+    // Filter data for display
     const filteredData = React.useMemo(() => {
         if (!dbData) return [];
-        return dbData.filter(item => locationFilters.includes(item.type as LocationFiltersTypes))
-    }, [dbData, locationFilters])
+        let data = dbData.filter(item => locationFilters.includes(item.type as LocationFiltersTypes));
+        const cleanedSearchQuery = searchQuery.trim().toLowerCase()
+        if (cleanedSearchQuery != "") {
+            data = data.filter(item =>
+            item.name
+                .toLowerCase()
+                .split(/\s+/) // split on whitespace
+                .some(word => word.startsWith(cleanedSearchQuery))
+            );
+        }
+        return data;
+    }, [dbData, locationFilters, searchQuery])
 
-    const [cardData, setCardData] = React.useState<{
-        foodService: FoodService;
-        active: boolean;
-    }>();
-
+    // Component functions
     const handleOpenCard = (foodService: FoodService) => { 
         setCardData({foodService, active: true});
     };
-
     const handleCloseCard = () => {
         setCardData((prev) => {
             if (!prev) return prev;
             return {...prev, active: false};
             });
     };
+    const handleSearchQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const text = event.target.value;
+        setSearchQuery(text);
+    }
 
     return (
         <Box sx={{ position: "fixed", top: 64, left: 0, width: "100vw", height: "calc(100vh - 64px - 56px)", 
@@ -56,7 +72,7 @@ export default function ListPage() {
         backgroundSize: "30%", backgroundPosition: "center", backgroundRepeat: "repeat"}}>
             <LocationFilters filters={locationFilters} setFilters={setLocationFilters} />
 
-            <SearchBar />
+            <SearchBar searchQuery={searchQuery} onSearchChange={handleSearchQueryChange} />
 
             <Paper elevation={3} sx={{ borderRadius: "10px", zIndex:1}}>
             <List sx={{ height: "70vh", overflow: 'auto', overflowX:'hidden', width: "25rem", bgcolor: "background.paper", color: "black", margin: "5px" }}>
